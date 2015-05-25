@@ -121,7 +121,6 @@ And these in the config mapping definition (or enable `auto_mapping <http://symf
             entity_managers:
                 default:
                     mappings:
-                        ApplicationSonataUserBundle: ~
                         SonataUserBundle: ~
                         FOSUserBundle: ~                                    # If SonataUserBundle extends it
 
@@ -316,6 +315,21 @@ Now, add the new ``Application`` Bundle into the kernel:
             )
         }
     }
+
+And now you can change config mapping definition again (or enable `auto_mapping <http://symfony.com/doc/2.0/reference/configuration/doctrine.html#configuration-overview>`_):
+
+.. code-block:: yaml
+
+    # app/config/config.yml
+
+    doctrine:
+        orm:
+            entity_managers:
+                default:
+                    mappings:
+                        ApplicationSonataUserBundle: ~                      # Add this Line
+                        SonataUserBundle: ~
+                        FOSUserBundle: ~                                    # If SonataUserBundle extends it
 
 And configure ``FosUserBundle`` to use the newly generated ``User`` and ``Group``
 classes:
